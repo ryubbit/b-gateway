@@ -242,12 +242,17 @@ Core Domain인 자전거 렌탈 서비스는 고객, 자전거, 바우처 서비
 
 ### 사이트카 테스트
 Bike 프로젝트의 사이드카 적용
-1. 사이드카 적용 전 
-![사이트카 적용화면](https://user-images.githubusercontent.com/25577890/91828424-1541fc80-ec7b-11ea-8839-4a2f4fc2179c.png)
+1. 사이드카 적용 전 Sleep 설정
+![적용슬립](https://user-images.githubusercontent.com/25577890/91829115-fc861680-ec7b-11ea-8e93-538b8719506a.png)
+
 2. 사이드카 적용 전 Siege 과부하 - 50퍼센트대의 가용성
 ![적용전시즈명령어](https://user-images.githubusercontent.com/25577890/91828427-15da9300-ec7b-11ea-8684-fd2e892b639a.PNG)
-3. 사이드카 적용 - hysterix 적용
 ![적용전시즈화면](https://user-images.githubusercontent.com/25577890/91828428-16732980-ec7b-11ea-9dfb-2b8427c38b76.PNG)
+
+3. 사이드카 적용 - hysterix 적용
+![히스테릭스](https://user-images.githubusercontent.com/25577890/91829110-fbed8000-ec7b-11ea-891c-0d625d5ac85b.png)
+
+4. 적용 후 Siege 과부하 - 90퍼센트 이상 가용성
 ![적용후시즈화면](https://user-images.githubusercontent.com/25577890/91828430-16732980-ec7b-11ea-9c7f-1ecf1a221a29.PNG)
 
 
