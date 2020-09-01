@@ -98,45 +98,44 @@ https://github.com/JuneBeomKim/b-gateway
 
 
 ### 이벤트스토밍
-* MSAEz 로 모델링한 이벤트스토밍 결과:  http://msaez.io/#/storming/g27yS2QGCWZdehTYhhdrjsnDm4C3/share/6f62bc50d5ac6961298aca424dc3d7c4/-MC64DwJDABCfnzXn0F2
+* MSAEz 로 모델링한 이벤트스토밍 결과:  http://www.msaez.io/#/storming/rX6bwdUwpMRNxLWEawoeDIkETow2/every/45e4b40116aedb2ec6a451d83a14e752/-MG1NTXc1M6uWZGKTY8s
 
 
 ### 이벤트 스토밍 결과  
 
 ### 이벤트 도출 
-![image](https://user-images.githubusercontent.com/19456350/87373348-7d059080-c5c4-11ea-8aa0-5013c497ac94.png)
+![1번이요](https://user-images.githubusercontent.com/25577890/91825953-eaa27480-ec77-11ea-8e57-20960bcafe56.png)
 
 ### 부적격 이벤트 탈락
-![image](https://user-images.githubusercontent.com/19456350/87373381-8ee73380-c5c4-11ea-9218-2cf7d51d6ebb.png)
+![2번](https://user-images.githubusercontent.com/25577890/91825955-ebd3a180-ec77-11ea-8071-70b258d7255a.png)
 
  - 대여시> 도서가 예약됨, 대여취소시>취소가능상태인지 확인됨메뉴검색됨 : 팀의 요구사항과 맞지 않는 업무이벤트이므로 제외함 
 
 ### 액터, 커맨드 부착하여 읽기 좋게
-![image](https://user-images.githubusercontent.com/19456350/87373537-d1107500-c5c4-11ea-8d20-1f83b802f7bc.png)
+![3번](https://user-images.githubusercontent.com/25577890/91825956-ebd3a180-ec77-11ea-95b9-e24a07c2352f.png)
 
 
 ### 어그리게잇으로 묶기
-![image](https://user-images.githubusercontent.com/19456350/87373582-e5ed0880-c5c4-11ea-8faa-e07bcc89e787.png)
+![4번](https://user-images.githubusercontent.com/25577890/91825959-ec6c3800-ec77-11ea-81dd-083e06d00e88.png)
 
 - app의 User, BookStore 의 대여, 결제 그와 연결된 command 와 event 들에 의하여 트랜잭션이 유지되어야 하는 단위로 그들 끼리 묶어줌
 
 ### 바운디드 컨텍스트로 묶기
-
-![image](https://user-images.githubusercontent.com/19456350/87373677-159c1080-c5c5-11ea-9000-af34c3b3fdfa.png)
+![5번](https://user-images.githubusercontent.com/25577890/91825961-ec6c3800-ec77-11ea-83d0-bc66a3fd92f8.png)
 
 ### 도메인분리
 - 핵심 업무인 도서대여가 가장 많은 로직이 있으며, 배포주기도 자주 발생하는 요구사항에 따라 아래와 같이 도메인 서열을 구분지음
-    - Core Domain:  BookRentalSystem(도서대여) 
-    - Supporting Domain: user(고객),  bookmanagement(도서관리)
-    - General Domain:  payment(결제)
+    - Core Domain:  RentalSystem(자전거대여) 
+    - Supporting Domain: user(고객관리),  bike(자전거관리)
+    - General Domain:  voucher(바우처관리)
 
 ### 폴리시 부착 
 
-![image](https://user-images.githubusercontent.com/19456350/87373881-7b889800-c5c5-11ea-8667-ce4dea42b703.png)
+![6번](https://user-images.githubusercontent.com/25577890/91825963-ed04ce80-ec77-11ea-8786-b54e519e0ba8.png)
 
 
 ### 폴리시의 이동과 컨텍스트 매핑 (점선은 Pub/Sub, 실선은 Req/Resp)
-![image](https://user-images.githubusercontent.com/19456350/87373972-893e1d80-c5c5-11ea-82f1-8b35a1b8dbbb.png)
+![7번 컨텍매핑](https://user-images.githubusercontent.com/25577890/91825966-ed9d6500-ec77-11ea-8668-f31a4aad205f.png)
 
 
 ### 완성된 모형
