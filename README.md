@@ -1,22 +1,22 @@
 
 
-# 도서대여 (이북) 서비스 
+# 자전거렌트 서비스 
 
 본 예제는 MSA/DDD/Event Storming/EDA 를 포괄하는 분석/설계/구현/운영 전단계를 커버하도록 구성한 예제입니다.
 이는 클라우드 네이티브 애플리케이션의 개발에 요구되는 체크포인트들을 통과하기 위한 예시 답안을 포함합니다.
 - 체크포인트 : https://workflowy.com/s/assessment-check-po/T5YrzcMewfo4J6LW
 
 # 구현 Repository
-https://github.com/roy-junny/teamB_gateway
-https://github.com/roy-junny/teamB_payment
-https://github.com/roy-junny/teamB_bookrentalsystem
-https://github.com/roy-junny/teamB_bookmanagement
-https://github.com/roy-junny/teamB_user
-https://github.com/roy-junny/teamB_view
+https://github.com/JuneBeomKim/b-rental
+https://github.com/JuneBeomKim/b-bike
+https://github.com/JuneBeomKim/b-user
+https://github.com/JuneBeomKim/b-voucher
+https://github.com/JuneBeomKim/b-myPage
+https://github.com/JuneBeomKim/b-gateway
 
 # Table of contents
 
-- [도서대여(이북)서비스](#---)
+- [자전거렌트 서비스](#---)
   - [서비스 시나리오](#서비스-시나리오)
   - [체크포인트](#체크포인트)
   - [분석/설계](#분석설계)
@@ -39,23 +39,25 @@ https://github.com/roy-junny/teamB_view
 # 서비스 시나리오
 
 기능적 요구사항
-1. 고객이 고객정보 등록을 한다
-1. 고객이 대여할 책을 고른다 
-1. 선택된 책이 대여가능한지 확인한다 
-1. 대여를 위한 결제를 진행한다 
-1. 대여 후 고객의 변심으로 취소할 수 있다 
-1. 대여가 취소되면 결제가 취소된다 
-1. 대여기간이 완료 되면 고객은 반납을 진행한다 
-1. 고객이나 책매니저가 도서의 대여상태를 중간중간 조회한다 
+1. 고객이 회원가입을 한다.
+1. 고객이 개인정보를 변경한다.
+1. 고객이 회원탈퇴를 한다.
+1. 고객이 바우처를 구매한다. 
+1. 고객이 자전거를 선택해서 렌트를 한다. 
+1. 렌트 완료시 바우처는 줄어든다.
+1. 렌트 완료시 자전거는 예약된다. 
+1. 고객이 렌트를 취소할 수 있다. 
+1. 관리자가 자전거의 상태를 변경할 수 있다.
 
 비기능적 요구사항
 1. 트랜잭션
-    1. 결제가 되지 않은 대여건은 거래가 성립되지 않아야 한다  Sync 호출 
+    1. 바우처가 없는 고객은 렌트가 되지 않아야 한다. Sync 호출 
+    1. 렌트된 자전거는 렌트가 되지 않아야 한다. Sync 호출 
 1. 장애격리
-    1. 도서관리 기능이 수행되지 않더라도 대여시스템은 365일 24시간 받을 수 있어야 한다  Async (event-driven), Eventual Consistency
-    1. 결제시스템이 과중되면 사용자를 잠시동안 받지 않고 결제를 잠시후에 하도록 유도한다  Circuit breaker, fallback
+    1. 즉시 렌트가 되지 않더라도, 렌트예약은 24시간 받을 수 있어야 한다.  Async (event-driven), Eventual Consistency
+    1. 실제 자전거 대여시스템에 문제가 발생 시, 복구된 이후에 순차처리를 한다.  Circuit breaker, fallback
 1. 성능
-    1. 고객과 책매니저가 대여상태를 해당 시스템에서 확인할 수 있다  CQRS
+    1. 고객이 마이페이지를 통해 렌트한 자전거, 바우처정보, 개인정보를 조회할 수 있다.  CQRS
 
 
 # 체크포인트
