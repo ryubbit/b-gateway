@@ -242,14 +242,13 @@ Core Domain인 도서대여 서비스는 고객, 도서관리 서비스와 독�
 
 ### 무정지 재배포
 모든 프로젝트의 readiness probe 및 liveness probe 설정 완료
-![image](https://user-images.githubusercontent.com/19456350/87493224-4a709c00-c687-11ea-96c8-2926a5d4a177.png)
-![image](https://user-images.githubusercontent.com/19456350/87502224-0340d600-c69c-11ea-96fe-e1b95da5a694.png)
+![readiness](https://user-images.githubusercontent.com/25577890/91814248-cd1cdd00-ec6e-11ea-894e-4f7790e5dbdb.png)
+
+
 
 
 ### 오토스케일 아웃
 결제서비스에 대해 CPU 사용량이 15프로 넘어가면 replica를 늘려주도록 설정한다 
 모니터링을통해 오토스케일 진행현황 확인 가능
-![image](https://user-images.githubusercontent.com/19456350/87494642-7f322280-c68a-11ea-880e-5a9b0ca40eb1.png)
-![image](https://user-images.githubusercontent.com/19456350/87502987-0e950100-c69e-11ea-9c6c-5d19bf6b33c0.png)
-
+![autoscale](https://user-images.githubusercontent.com/25577890/91814246-cbebb000-ec6e-11ea-8074-3a0157634495.PNG)
 
