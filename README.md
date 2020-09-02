@@ -204,41 +204,29 @@ Core Domain인 자전거 렌탈 서비스는 고객, 자전거, 바우처 서비
 ![gw](https://user-images.githubusercontent.com/25577890/91920539-54686000-ed04-11ea-83cc-53677289d30c.PNG)
 LoadBalancer type으로 서비스
 
+### 동기호출과 이벤트드리븐
+분석단계에서의 조건 중 하나로 렌트->bike관리 간의 호출은 동기식 일관성을 유지하는 트랜잭션으로 처리하기로 하였다. 
+
+ - bike관리,바우처 서비스를 잠시 내려놓고, 렌탈을 받은 직후(@PostPersist) bike상태, 바우처 잔여갯수를 변경하도록 처리 -> 동기방식이므로 수신실패
+ ![rental 동기오류](https://user-images.githubusercontent.com/25577890/91920825-056efa80-ed05-11ea-9a2f-e9d751fd36b4.PNG)
+ 
+ -  bike관리,바우처 서비스를 올려놓고, 렌탈을 받은 직후(@PostPersist) bike상태, 바우처 잔여갯수를 변경 성공확인
+![동기호출 성공](https://user-images.githubusercontent.com/25577890/91920831-06a02780-ed05-11ea-89ec-6b732507339c.PNG)
+![동기호출 성공_kafka](https://user-images.githubusercontent.com/25577890/91920834-06a02780-ed05-11ea-9ddc-ba5188b1175b.PNG)
+ 
+
+
 ### 비동기호출과이벤트드리븐
+렌트취소가 이루어진 후에 bike관리, 바우처시스템으로 이를 알려주는 행위는 동기식이 아니라 비 동기식으로 처리하여 렌탈시스템의 처리를 위하여 렌탈주문이 블로킹 되지 않아도록 처리한다.
 
-- 고객등록
+ - 이를 위하여 렌탈에 렌탈상태를 남긴 후에 곧바로 렌탈취소 되었다는 도메인 이벤트를 카프카로 송출한다(Publish)
+ ![비동기호출(bike svc 내린상태)](https://user-images.githubusercontent.com/25577890/91920836-0738be00-ed05-11ea-87e4-b0489a142f96.PNG)
+ ![비동기호출_kafka(bike svc 내린상태)](https://user-images.githubusercontent.com/25577890/91920839-07d15480-ed05-11ea-9900-8bf31396667a.PNG)
 
-![image](https://user-images.githubusercontent.com/19456350/87502569-d0e3a880-c69c-11ea-87be-a47b9db79ed9.png)
-![image](https://user-images.githubusercontent.com/19456350/87502587-db9e3d80-c69c-11ea-844e-fbbffa022914.png)
-
-
-- 도서등록
-
-![image](https://user-images.githubusercontent.com/19456350/87502507-abef3580-c69c-11ea-9aec-d8d0dae12c1e.png)
-![image](https://user-images.githubusercontent.com/19456350/87502524-b6a9ca80-c69c-11ea-9bc6-348b4a64a627.png)
-
-
-- 도서대여
-
-![image](https://user-images.githubusercontent.com/19456350/87502617-f1136780-c69c-11ea-9d94-18954d47d324.png)
-![image](https://user-images.githubusercontent.com/19456350/87502642-ff618380-c69c-11ea-9b39-12150742d25e.png)
-
-- 대여 후 
-
-![image](https://user-images.githubusercontent.com/19456350/87502684-2a4bd780-c69d-11ea-8b71-c8f06bbc59e8.png)
-
-- 도서반납
-
-![image](https://user-images.githubusercontent.com/19456350/87502709-45b6e280-c69d-11ea-8a81-51d6203c1ea5.png)
-![image](https://user-images.githubusercontent.com/19456350/87502732-510a0e00-c69d-11ea-8022-ec9d1d23ff5d.png)
-
-- 반납 후 
-
-![image](https://user-images.githubusercontent.com/19456350/87502740-5d8e6680-c69d-11ea-99c7-baf4c626e074.png)
-
--결제 취소 시
-
-![image](https://user-images.githubusercontent.com/19456350/87502770-71d26380-c69d-11ea-9bc9-acc190ed87fb.png)
+ - bike서비스를 올린후, 카프카에서 bike서비스에 대한 비동기호출 메세지를 수신한 것을 볼 수 있다.
+ - bike, 바우처 서비스가 잠시 내려간 상태라도 렌탈취소를 받는데 문제가 없다.
+![kubectl get all (bike서비스 후에 올린상태)](https://user-images.githubusercontent.com/25577890/91920823-04d66400-ed05-11ea-996c-b738656cda74.PNG)
+![비동기호출_kafka(bike svc 내렸다 올린상태)](https://user-images.githubusercontent.com/25577890/91920838-0738be00-ed05-11ea-8a64-3188e5e1b98b.PNG)
 
 
 # 운영
