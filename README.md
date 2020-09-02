@@ -7,12 +7,12 @@
 - 체크포인트 : https://workflowy.com/s/assessment-check-po/T5YrzcMewfo4J6LW
 
 # 구현 Repository
-https://github.com/JuneBeomKim/b-rental
-https://github.com/JuneBeomKim/b-bike
-https://github.com/JuneBeomKim/b-user
-https://github.com/JuneBeomKim/b-voucher
-https://github.com/JuneBeomKim/b-myPage
-https://github.com/JuneBeomKim/b-gateway
+- https://github.com/JuneBeomKim/b-rental
+- https://github.com/JuneBeomKim/b-bike
+- https://github.com/JuneBeomKim/b-user
+- https://github.com/JuneBeomKim/b-voucher
+- https://github.com/JuneBeomKim/b-myPage
+- https://github.com/JuneBeomKim/b-gateway
 
 # Table of contents
 
