@@ -223,9 +223,10 @@ LoadBalancer type으로 서비스
  ![비동기호출(bike svc 내린상태)](https://user-images.githubusercontent.com/25577890/91920836-0738be00-ed05-11ea-87e4-b0489a142f96.PNG)
  ![비동기호출_kafka(bike svc 내린상태)](https://user-images.githubusercontent.com/25577890/91920839-07d15480-ed05-11ea-9900-8bf31396667a.PNG)
 
- - bike서비스를 올린후, 카프카에서 bike서비스에 대한 비동기호출 메세지를 수신한 것을 볼 수 있다.
  - bike, 바우처 서비스가 잠시 내려간 상태라도 렌탈취소를 받는데 문제가 없다.
 ![kubectl get all (bike서비스 후에 올린상태)](https://user-images.githubusercontent.com/25577890/91920823-04d66400-ed05-11ea-996c-b738656cda74.PNG)
+
+ - bike서비스를 올린후, 카프카에서 bike서비스에 대한 비동기호출 메세지를 수신한 것을 볼 수 있다.
 ![비동기호출_kafka(bike svc 내렸다 올린상태)](https://user-images.githubusercontent.com/25577890/91920838-0738be00-ed05-11ea-8a64-3188e5e1b98b.PNG)
 
 
