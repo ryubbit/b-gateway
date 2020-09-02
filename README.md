@@ -139,10 +139,10 @@ https://github.com/JuneBeomKim/b-gateway
 
 
 ### 완성된 모형
-![image](https://user-images.githubusercontent.com/19456350/87374225-a2df6500-c5c5-11ea-8fab-f36dba5e5219.png)
+![완성1](https://user-images.githubusercontent.com/25577890/91920135-1f0f4280-ed03-11ea-8a73-a0f939928ead.PNG)
 
 ### 완성본에 대한 기능적/비기능적 요구사항을 커버하는지 검증
-![image](https://user-images.githubusercontent.com/19456350/87374225-a2df6500-c5c5-11ea-8fab-f36dba5e5219.png)
+![완성1](https://user-images.githubusercontent.com/25577890/91920135-1f0f4280-ed03-11ea-8a73-a0f939928ead.PNG)
 
     - 고객이 고객정보를 등록한다 (ok)
     - 매니저가 자전거 정보를 등록한다(ok)
@@ -154,11 +154,11 @@ https://github.com/JuneBeomKim/b-gateway
 
 ### 비동기호출과이벤트드리븐
 
-![image](https://user-images.githubusercontent.com/19456350/87375293-20a37080-c5c6-11ea-9e0b-8da91ea77854.png)
+![완성2](https://user-images.githubusercontent.com/25577890/91920137-1fa7d900-ed03-11ea-8e69-8b1943b6f331.PNG)
 
   1. 비동기 호출 마이크로 서비스를 넘나드는 시나리오에 대한 트랜잭션 처리
-     - 결제가 정상 승인될때만 대여가 가능해야 한다는 팀 요구사항이 있었음 
-     - 결제가 완료되지 않은 대여요청 건은 없다!! 대여와 결제에 대해서는 Request-Response 방식 처리
+     - 바우처가 정상 처리될때만, 자전거가 사용가능할때에만 대여가 가능해야 한다는 요구사항
+     -  Request-Response 방식 처리
   2/3. 도서, 고객의 상태는 관리하지만 해당 데이터의 일관성의 시점은 크게 중요하지 않다는 팀의 요구사항에 따라  Eventual Consistency 채택
  
 ### 장애격리
@@ -174,9 +174,11 @@ Core Domain인 자전거 렌탈 서비스는 고객, 자전거, 바우처 서비
 4. 자동차 서비스 (자동차도 대여가 가능하도록 별도 관리하여 서비스)
 
 
+
+
 ### 헥사고날
 
-![image](https://user-images.githubusercontent.com/19456350/87489540-40966b00-c67e-11ea-82c7-59a559cf0489.png)
+![헥사고날](https://user-images.githubusercontent.com/25577890/91920130-1e76ac00-ed03-11ea-9716-3314eff78eb1.png)
 
     - Chris Richardson, MSA Patterns 참고하여 Inbound adaptor와 Outbound adaptor를 구분함
     - 호출관계에서 PubSub 과 Req/Resp 를 구분함
@@ -187,19 +189,20 @@ Core Domain인 자전거 렌탈 서비스는 고객, 자전거, 바우처 서비
 분석/설계 단계에서 도출된 헥사고날 아키텍처에 따라, 각 BC별로 대변되는 마이크로 서비스들을 구현하였다. 
 
 ### 구현체개발
+# github
+![git](https://user-images.githubusercontent.com/25577890/91920437-005d7b80-ed04-11ea-9ef8-ee215209520a.PNG)
+# kubectl get all
+![최종kubectl](https://user-images.githubusercontent.com/25577890/91920370-cbe9bf80-ed03-11ea-8c9f-39c7a98bb227.PNG)
 
-![image](https://user-images.githubusercontent.com/19456350/87424041-448ea280-c616-11ea-940b-8898d60c8991.png)
-![image](https://user-images.githubusercontent.com/19456350/87488944-ad106a80-c67c-11ea-983f-978778044cbd.png)
 
 ### 유비쿼터스랭귀지
 
 실생활에도 많이 쓰는 영어단을 사용함으로써 모든 개발자들이 직관적으로 공통적으로 의미를 이해 할 수 있도록 하였다.
-(book, payment, user, manager등)
+(bike, voucher, user 등)
 
 ### 게이트웨이와인증
-![image](https://user-images.githubusercontent.com/19456350/87490246-31b0b800-c680-11ea-99d6-b3c58b256f1d.png)
-![image](https://user-images.githubusercontent.com/19456350/87428160-e44f2f00-c61c-11ea-8315-e10101a46e70.png)
-
+![gw](https://user-images.githubusercontent.com/25577890/91920539-54686000-ed04-11ea-83cc-53677289d30c.PNG)
+LoadBalancer type으로 서비스
 
 ### 비동기호출과이벤트드리븐
 
