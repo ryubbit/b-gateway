@@ -1,0 +1,2 @@
+  클러스터생성 -- 화면에선 eks에서 확인
+eksctl create cluster --name skccuser08 --version 1.15 --nodegroup-name standard-workers --node-type t3.medium --nodes 3 --nodes-min 1 --nodes-max 3
