@@ -261,13 +261,14 @@ Bike 프로젝트의 사이드카 적용
 
 
 
-## 신규 서비스 추가 내용
+# 신규 서비스 추가
 
-자전거 렌탈시 고객이 헬멧(Helm)을 추가로 이용할 수 있도록 추가
+### 자전거 렌탈시 고객이 헬멧(Helm)을 추가로 이용할 수 있도록 추가
+- 예약은 Pub/Sub 비동기 구조로, 예약취소는 Req/Res 동기구조로 Rental 서비스와 연동
 ![b-change-diagram](https://user-images.githubusercontent.com/67405457/92072714-d2a03180-edec-11ea-9e47-d126cdd51374.JPG)
 
 
-1) 자전거(Bike)는 신규 등록시 myPage에서 관리하지 않아 listener처리가 없었으나 헬멧(Helm)은 등록시 myPage에서 처리하여 보여줌
+1) 기존 자전거(Bike)와의 차이점은 자전거(Bike)는 신규 등록시 myPage에서 관리하지 않아 listener처리가 없었으나 헬멧(Helm)은 등록시 myPage에서 처리하여 보여줌
 ![b-cqrs1](https://user-images.githubusercontent.com/67405457/92072720-d92ea900-edec-11ea-987e-c9dbf5d4c444.JPG)
 
 ![b-cqrs2](https://user-images.githubusercontent.com/67405457/92072724-dcc23000-edec-11ea-8cbc-a6cda924879b.JPG)
