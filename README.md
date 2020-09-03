@@ -256,3 +256,12 @@ Bike 프로젝트의 사이드카 적용
 모니터링을통해 오토스케일 진행현황 확인 가능
 ![autoscale](https://user-images.githubusercontent.com/25577890/91814246-cbebb000-ec6e-11ea-8074-3a0157634495.PNG)
 
+
+
+![b-change-diagram](https://user-images.githubusercontent.com/67405457/92072714-d2a03180-edec-11ea-9e47-d126cdd51374.JPG)
+![b-cqrs1](https://user-images.githubusercontent.com/67405457/92072720-d92ea900-edec-11ea-987e-c9dbf5d4c444.JPG)
+![b-cqrs2](https://user-images.githubusercontent.com/67405457/92072724-dcc23000-edec-11ea-8cbc-a6cda924879b.JPG)
+![b-gateway1](https://user-images.githubusercontent.com/67405457/92072728-e055b700-edec-11ea-87ce-82039b21e3dd.JPG)
+![b-gateway2](https://user-images.githubusercontent.com/67405457/92072734-e2b81100-edec-11ea-8a03-b6f352f2d3f6.JPG)
+![b-readiness1](https://user-images.githubusercontent.com/67405457/92072739-e5b30180-edec-11ea-8fe3-c309027a1048.JPG)
+![b-readiness2](https://user-images.githubusercontent.com/67405457/92072752-e9468880-edec-11ea-8703-dfd4335ce7b6.JPG)
