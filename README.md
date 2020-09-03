@@ -257,7 +257,11 @@ Bike 프로젝트의 사이드카 적용
 ![autoscale](https://user-images.githubusercontent.com/25577890/91814246-cbebb000-ec6e-11ea-8074-3a0157634495.PNG)
 
 
-# 신규 서비스 추가 내용
+
+
+
+
+## 신규 서비스 추가 내용
 
 자전거 렌탈시 고객이 헬멧(Helm)을 추가로 이용할 수 있도록 추가
 ![b-change-diagram](https://user-images.githubusercontent.com/67405457/92072714-d2a03180-edec-11ea-9e47-d126cdd51374.JPG)
@@ -265,14 +269,21 @@ Bike 프로젝트의 사이드카 적용
 
 1) 자전거(Bike)는 신규 등록시 myPage에서 관리하지 않아 listener처리가 없었으나 헬멧(Helm)은 등록시 myPage에서 처리하여 보여줌
 ![b-cqrs1](https://user-images.githubusercontent.com/67405457/92072720-d92ea900-edec-11ea-987e-c9dbf5d4c444.JPG)
+
 ![b-cqrs2](https://user-images.githubusercontent.com/67405457/92072724-dcc23000-edec-11ea-8cbc-a6cda924879b.JPG)
+
 
 2) 신규로 추가된 헬멧(Heml) 서비스도 내부적으로는 별도의 포트(8086)로 제공되지만 외부로는 Gateway를 통해서 동일한 포트(8080) 
 ![b-gateway1](https://user-images.githubusercontent.com/67405457/92072728-e055b700-edec-11ea-87ce-82039b21e3dd.JPG)
+
 ![b-gateway2](https://user-images.githubusercontent.com/67405457/92072734-e2b81100-edec-11ea-8a03-b6f352f2d3f6.JPG)
+
+![gateway3](https://user-images.githubusercontent.com/67405457/92074067-1ea0a580-edf0-11ea-8c1d-c777282ae1c1.JPG)
+
 
 3) 신규로 추가된 헬멧(Heml) 서비스는 readiness probe를 적용하여 zero-downtime을 구현
 - 적용전 : 배포를 위해 apply 수행시 availability 100%를 보장 못함 
 ![b-readiness1](https://user-images.githubusercontent.com/67405457/92072739-e5b30180-edec-11ea-8fe3-c309027a1048.JPG)
+
 - 적용후 : 배포 중 apply 수행시에도 100% 대응
 ![b-readiness2](https://user-images.githubusercontent.com/67405457/92072752-e9468880-edec-11ea-8703-dfd4335ce7b6.JPG)
