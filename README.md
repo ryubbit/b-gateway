@@ -283,8 +283,14 @@ Bike 프로젝트의 사이드카 적용
 
 
 3) 신규로 추가된 헬멧(Heml) 서비스는 readiness probe를 적용하여 zero-downtime을 구현
-- 적용전 : 배포를 위해 apply 수행시 availability 100%를 보장 못함 
+   - 적용전 : 배포를 위해 apply 수행시 availability 100%를 보장 못함 
 ![b-readiness1](https://user-images.githubusercontent.com/67405457/92072739-e5b30180-edec-11ea-8fe3-c309027a1048.JPG)
 
-- 적용후 : 배포 중 apply 수행시에도 100% 대응
+   - 적용후 : 배포 중 apply 수행시에도 100% 대응
 ![b-readiness2](https://user-images.githubusercontent.com/67405457/92072752-e9468880-edec-11ea-8703-dfd4335ce7b6.JPG)
+
+
+4) hystrix를 이용한 과부하시 circuit-breaker 적용
+   - 동기식으로 처리하는 렌탈(Rental) 서비스에 hystrix 설정을 하여 Req/Res로 처리하는 바우처(Voucher), 자전거(Bike), 헬멧(Helm) 서비스에서 일정시간 동안 timeout 과발생시 fallback 처리하도록 설정
+![b-circuitbreaker](https://user-images.githubusercontent.com/67405457/92078257-ea7db280-edf8-11ea-837e-53902589af8c.JPG)
+
